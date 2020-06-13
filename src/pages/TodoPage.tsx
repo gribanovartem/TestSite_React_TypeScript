@@ -12,10 +12,36 @@ export const TodoPage: React.FC = () => {
          completed: false,
       };
       updateTodo((prev) => [newTodo, ...prev]);
+      fetch('https://cors-anywhere.herokuapp.com/https://todoblognodejs.herokuapp.com/todos', {
+         method: 'post',
+         headers: {
+            'Content-Type': 'application/json;charset=utf-8'
+          },
+          body: JSON.stringify(newTodo)
+      })
+      .then(response => {
+         response.json()
+      })  
+      .then(data => {  
+        console.log('Request succeeded with JSON response', data);  
+      })  
    };
    useEffect(()=>{
-      const localTodos = JSON.parse(localStorage.getItem('todos') || '[]') as ITodos[]
-      updateTodo(localTodos)
+      // const localTodos = JSON.parse(localStorage.getItem('todos') || '[]') as ITodos[]
+      // updateTodo(localTodos)
+      fetch('https://cors-anywhere.herokuapp.com/https://todoblognodejs.herokuapp.com/todos')
+      .then(response=> {
+          console.log(response)
+          if(response.ok) {
+              return response.json();
+          }
+          else {
+              console.log('error')
+          }
+      })
+      .then(data=> {
+         updateTodo(data)
+      })
    }, [])
    useEffect(()=>{
       localStorage.setItem('todos', JSON.stringify(todoList))
