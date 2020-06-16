@@ -5,7 +5,7 @@ export const BlogPage: React.FC = () => {
          <div className="col s3 m4">
             <div className="card">
                <div className="card-image">
-                  <img src="https://avatarko.ru/img/kartinka/16/muzhchina_15289.jpg" />
+                  <img src="https://avatarko.ru/img/kartinka/16/muzhchina_15289.jpg" alt='a'/>
                   <span className="card-title">Card Title</span>
                </div>
                <div className="card-content">
@@ -23,7 +23,7 @@ export const BlogPage: React.FC = () => {
 
             <div className="card">
                <div className="card-image">
-                  <img src="https://www.prikol.ru/wp-content/uploads/2017/10/kartinki-04102017-001.jpg" />
+                  <img src="https://www.prikol.ru/wp-content/uploads/2017/10/kartinki-04102017-001.jpg" alt='a'/>
                   <span className="card-title">Card Title</span>
                </div>
                <div className="card-content">

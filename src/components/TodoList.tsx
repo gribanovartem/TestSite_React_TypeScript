@@ -6,7 +6,8 @@ export const TodoList: React.FC<ITodoListProps> = ({
    onToogle,
    onRemove,
 }) => {
-   const newTodoList = todoList.map((todo) => {
+   console.log(todoList);
+   const newTodoList = todoList?todoList.map((todo) => {
       const titleClass = todo.completed ? "completed" : "";
       return (
          <ul className="collection" key={todo.id}>
@@ -27,8 +28,8 @@ export const TodoList: React.FC<ITodoListProps> = ({
             </li>
          </ul>
       );
-   });
+   }):null;
    const noTodo = <h4>Бро!  Ты пока не добавил никаких дел</h4>
 
-   return <div className="container">{todoList.length===0 ? noTodo : newTodoList}</div>;
+   return <div className="container">{todoList && todoList.length===0 ? noTodo : newTodoList}</div>;
 };
