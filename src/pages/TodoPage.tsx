@@ -13,28 +13,29 @@ export const TodoPage: React.FC = () => {
       };
       updateTodo((prev) => [newTodo, ...prev]);
       fetch(
-         "https://todoblognodejs.herokuapp.com/todos",
+         // "https://todoblognodejs.herokuapp.com/todos",
+         "http://localhost:8003/todos",
          {
-            method: "post",
+            method: "POST",
             headers: {
                "Content-Type": "application/json;charset=utf-8",
             },
             body: JSON.stringify(newTodo),
          }
       )
-         .then((response) => {
-            response.json();
-         })
-         .then((data) => {
-            console.log("Request succeeded with JSON response", data);
-         });
+         // .then((response) => {
+         //    console.log(response.text());
+         // })
+         // .then((data) => {
+         //    console.log("Request succeeded with JSON response", data);
+         // });
    };
    useEffect(() => {
       // const localTodos = JSON.parse(localStorage.getItem('todos') || '[]') as ITodos[]
       // updateTodo(localTodos)
       fetch(
-         "https://todoblognodejs.herokuapp.com/todos",
-         // "http://localhost:8003/todos",
+         // "https://todoblognodejs.herokuapp.com/todos",
+         "http://localhost:8003/todos",
          {
             method: "GET",
             headers: {
@@ -43,7 +44,6 @@ export const TodoPage: React.FC = () => {
          }
       )
          .then((response) => {
-            console.log(response);
             if (response.ok) {
                return response.json();
             } else {
@@ -51,7 +51,6 @@ export const TodoPage: React.FC = () => {
             }
          })
          .then((data) => {
-            console.log(data);
             updateTodo(data);
          });
    }, []);
@@ -63,13 +62,35 @@ export const TodoPage: React.FC = () => {
          todoList.map((todo) => {
             if (todo.id === id) {
                todo.completed = !todo.completed;
+               fetch(
+                  "http://localhost:8003/todos",
+                  {
+                     method: "PUT",
+                     headers: {
+                        "Content-Type": "application/json;charset=utf-8",
+                     },
+                     body: JSON.stringify({id: id, completed: todo.completed}),
+                  }
+               );
             }
             return todo;
          })
       );
+     
+      
    };
    const removeHandler = (id: number) => {
       updateTodo((prev) => prev.filter((todo) => todo.id !== id));
+      fetch(
+         "http://localhost:8003/todos",
+         {
+            method: "DELETE",
+            headers: {
+               "Content-Type": "application/json;charset=utf-8",
+            },
+            body: JSON.stringify({id: id}),
+         }
+      );
    };
    return (
       <>

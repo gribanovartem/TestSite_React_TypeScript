@@ -6,7 +6,6 @@ export const TodoList: React.FC<ITodoListProps> = ({
    onToogle,
    onRemove,
 }) => {
-   console.log(todoList);
    const newTodoList = todoList?todoList.map((todo) => {
       const titleClass = todo.completed ? "completed" : "";
       return (
