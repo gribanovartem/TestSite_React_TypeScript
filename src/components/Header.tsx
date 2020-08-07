@@ -4,7 +4,7 @@ import { NavLink } from "react-router-dom";
 export const Header: React.FC = () => {
    const [showMenu, setShowMenu] = useState(false);
    const mobileMenu = (
-      <ul className="mobile_nav teal darken-3" onClick={() => hideMobileMenu()}>
+      <ul className="mobile_nav light-blue darken-3" onClick={() => hideMobileMenu()}>
          <li>
             <NavLink to="/TodoPage">Список дел</NavLink>
          </li>
@@ -15,6 +15,7 @@ export const Header: React.FC = () => {
             <NavLink to="/InfoPage">Информация</NavLink>
          </li>
       </ul>
+      
    );
    const mobileMenuHandler = (event: React.MouseEvent): void => {
       event.preventDefault();
@@ -25,7 +26,7 @@ export const Header: React.FC = () => {
    };
    return (
       <div className="header ">
-         <nav className="teal darken-3">
+         <nav className="light-blue darken-3">
             <div className="nav-wrapper">
                <NavLink to="/" className="brand-logo">
                   Typescript
@@ -50,8 +51,9 @@ export const Header: React.FC = () => {
                   </li>
                </ul>
             </div>
-            {showMenu && mobileMenu}
+            
          </nav>
+         {showMenu && mobileMenu}
       </div>
    );
 };

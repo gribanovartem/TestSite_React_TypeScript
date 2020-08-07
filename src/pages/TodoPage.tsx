@@ -63,6 +63,7 @@ export const TodoPage: React.FC = () => {
             if (todo.id === id) {
                todo.completed = !todo.completed;
                fetch(
+                  // "https://todoblognodejs.herokuapp.com/todos",
                   "http://localhost:8003/todos",
                   {
                      method: "PUT",
@@ -82,6 +83,7 @@ export const TodoPage: React.FC = () => {
    const removeHandler = (id: number) => {
       updateTodo((prev) => prev.filter((todo) => todo.id !== id));
       fetch(
+         // "https://todoblognodejs.herokuapp.com/todos",
          "http://localhost:8003/todos",
          {
             method: "DELETE",
