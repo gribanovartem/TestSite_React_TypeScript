@@ -19,4 +19,5 @@ export interface IPosts {
    url: string;
    text: string;
    likes: number;
+   title: string;
 }

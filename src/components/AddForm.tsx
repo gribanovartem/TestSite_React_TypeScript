@@ -7,7 +7,12 @@ export const AddForm: React.FC<{modal: boolean, closeModalHandler: Function}> = 
 
    return (
       <form className={newModalClassName}>
+         <i className="material-icons close" onClick={()=>props.closeModalHandler()}>close</i>
          <div className="row">
+         <div className="input-field col s12">
+               <input id="Title" type="text" className="validate" />
+               <label htmlFor="Title">Заголовок</label>
+            </div>
             <div className="input-field col s12">
                <input id="URL" type="text" className="validate" />
                <label htmlFor="URL">URL картинки</label>

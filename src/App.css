@@ -92,14 +92,16 @@ nav {
 .card-content {
    display: flex;
 }
+.display-none {
+   display: none;
+}
 .likeIcon {
    position: relative;
    display: flex;
    align-items: center;
 }
-/* .material-icons {
-   margin: 0 5px 0 15px;
-} */
+
+
 .likeCount {
    font-weight: bold;
 }
@@ -115,14 +117,9 @@ nav {
 }
 input[type=text]:not(.browser-default):focus.validate+label,
 textarea:not(.browser-default):focus+label,
-/* input[type=text]:not(.browser-default).validate+label, */
 .input-field input[type=textarea]:focus + label {
    color: #0277bd !important;
 }
-/* .input-field input[type=text]:focus {
-   border-bottom: 1px solid #0277bd;
-   box-shadow: 0 1px 0 0 #0277bd;
-} */
 input:focus,
 textarea:focus {
    border-bottom: 1px solid #005DAB !important;
@@ -154,12 +151,50 @@ textarea:focus {
    transform: scale(1.2);
 }
 .App .row .addForm {
-   background-color: rgb(255, 255, 255);
-   border: 1px solid rgb(212, 212, 212);
-   min-height: 44%;
-   position: absolute;
-   left: 33.3%;
-   z-index: 5;
+   /* Скрываем окна  */
+   opacity: 0;
+   visibility: hidden;
+   /*  Установаем ширину окна  */
+   width: 100%;
+   max-width: 500px;
+   /*  Центрируем и задаем z-index */
+   position: fixed;
+   top: 50%;
+   left: 50%;
+   transform: translate(-50%, -50%);
+   z-index: 30; /* Должен быть выше чем у подложки*/
+   /*  Побочные стили   */
+   box-shadow: 0 3px 10px -.5px rgba(0, 0, 0, .2); 
+   text-align: center;
+   padding: 15px;
+   border-radius: 3px;
+   background-color: #fff;
+   transition: 0.3s all;
+}
+.darkBackground {
+   opacity: 0;
+   visibility: hidden;
+   position: fixed;
+   top: 0;
+   left: 0;
+   width: 100%;
+   height: 100%;
+   background-color: rgba(0, 0, 0, .5);
+   z-index: 20;
+   transition: .3s all;
+}
+.App .row .addForm.modalShow,
+.darkBackground.active{
+   opacity: 1;
+   visibility: visible;
+}
+.close {
+   cursor: pointer;
+   display: flex;
+   flex-direction: row-reverse;
+}
+.close:hover {
+   transform: scale(1.2);
 }
 .modalShow {
    top: 33.33%;
@@ -198,15 +233,9 @@ textarea:focus {
       position: fixed;
       right: 1%;
    }
-   .App .row .addForm {
-      left: 20%;
-   }
 }
 @media only screen and (max-width: 700px) {
    .row .col.m4 {
       width: 90%;
-   }
-   .App .row .addForm {
-      left: 5%;
    }
 }
