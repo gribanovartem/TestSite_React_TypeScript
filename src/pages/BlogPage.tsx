@@ -6,46 +6,82 @@ export const BlogPage: React.FC = () => {
    const [isModal, changeModal] = useState<boolean>(false);
    const [posts, changePosts] = useState<Array<IPosts>>([]);
 
-   const changeModalHandler = (e: React.MouseEvent<HTMLSpanElement>):void => {
+   const changeModalHandler = (e: React.MouseEvent<HTMLSpanElement>): void => {
       changeModal(!isModal);
-   }
-   const closeModalHandler = (e: React.MouseEvent<HTMLSpanElement>):void => {
-      changeModal(false);
-   }
-   
-   useEffect(()=>{
+   };
+   const closeModalHandler = (e: React.MouseEvent<HTMLSpanElement>): void => {
+      if (isModal) {
+         changeModal(false);
+      }
+   };
+   const addNewPost = (title: string, url: string, text: string): void => {
+      const newPost = {
+         title,
+         url,
+         text,
+         likes: 0
+      }
       fetch(
          // "https://todoblognodejs.herokuapp.com/posts",
          "http://localhost:8003/posts",
          {
-            method: 'GET',
+            method: "POST",
             headers: {
-               'Content-Type': 'application/json'
+               "Content-Type": "application/json;charset=utf-8",
+            },
+            body: JSON.stringify(newPost),
+         }
+      ).then((response) => {
+         console.log(response.text());
+      });
+
+      changeModal(false);
+      window.location.reload();
+   };
+
+   useEffect(() => {
+      fetch(
+         // "https://todoblognodejs.herokuapp.com/posts",
+         "http://localhost:8003/posts",
+         {
+            method: "GET",
+            headers: {
+               "Content-Type": "application/json",
             },
          }
       )
-      .then(response => {
-         if(response.ok) {
-            return response.json();
-         }
-         else {
-            console.log('error');
-         }
-      })
-      .then(data => {
-         changePosts(data)
-      })
-      
+         .then((response) => {
+            if (response.ok) {
+               return response.json();
+            } else {
+               console.log("error");
+            }
+         })
+         .then((data) => {
+            changePosts(data);
+         });
    }, []);
 
    return (
       <div className="row">
-         <AddForm modal={isModal} closeModalHandler={closeModalHandler}/>
-         <div className={isModal ? 'darkBackground active' : 'darkBackground'}></div>
+         <AddForm
+            modal={isModal}
+            closeModalHandler={closeModalHandler}
+            addNewPost={addNewPost}
+         />
+         <div
+            className={isModal ? "darkBackground active" : "darkBackground"}
+            onClick={closeModalHandler}
+         ></div>
          <div className="col s3 m4">
-         <span className='btn-floating btn-large waves-effect waves-light light-blue darken-3' onClick={changeModalHandler}><i className="material-icons addButton">add</i></span>
+            <span
+               className="btn-floating btn-large waves-effect waves-light light-blue darken-3"
+               onClick={changeModalHandler}
+            >
+               <i className="material-icons addButton">add</i>
+            </span>
             {posts.map((item) => {
-               return <Card post = {item} key={item._id}/>
+               return <Card post={item} key={item._id} />;
             })}
          </div>
       </div>

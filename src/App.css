@@ -188,10 +188,19 @@ textarea:focus {
    opacity: 1;
    visibility: visible;
 }
+.card .card-content {
+   display: flex;
+   justify-content: space-between;
+}
+.col .row .input-field {
+   padding-bottom: 10px;
+}
+.close-container {
+   display: flex;
+   flex-flow: row-reverse;
+}
 .close {
    cursor: pointer;
-   display: flex;
-   flex-direction: row-reverse;
 }
 .close:hover {
    transform: scale(1.2);

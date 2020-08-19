@@ -4,18 +4,25 @@ import { Preloader } from "./Preloader";
 
 export const Card: React.FC<{ post: IPosts }> = (props) => {
    const [isImgLoad, changeImgLoad] = useState<boolean>(false);
+   const [isImgLoadError, setImgError] = useState<boolean>(false);
+   const [url, changeUrl] = useState<string>(props.post.url);
    const imgLoaded = (): void => {
       changeImgLoad(!isImgLoad);
    };
+   const setErrorImg = () => {
+      setImgError(true);
+      changeUrl('https://dubsism.files.wordpress.com/2017/12/image-not-found.png');
+   }
    return (
       <>
-         <div className={isImgLoad ? 'card' : 'card display-none'}>
+         <div className={isImgLoad ? "card" : "card display-none"}>
             <div className="card-image">
                <div className="card-wrapper">
                   <img
-                     src={props.post.url}
+                     src={url}
                      alt={props.post.title}
                      onLoad={imgLoaded}
+                     onError={setErrorImg}
                   />
                </div>
                <span className="card-title">{props.post.title}</span>
@@ -28,7 +35,7 @@ export const Card: React.FC<{ post: IPosts }> = (props) => {
                </div>
             </div>
          </div>
-         <div className={!isImgLoad ? 'preloader' : 'preloader display-none'}>
+         <div className={isImgLoad || isImgLoadError ?  "preloader display-none" : "preloader"}>
             <Preloader />
          </div>
       </>
