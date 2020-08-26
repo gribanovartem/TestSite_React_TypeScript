@@ -2,16 +2,30 @@ import React, { useState } from "react";
 import { IPosts } from "../interfaces/interfaces";
 import { Preloader } from "./Preloader";
 
-export const Card: React.FC<{ post: IPosts }> = (props) => {
+export const Card: React.FC<{ post: IPosts, changePostLikes: Function }> = (props) => {
    const [isImgLoad, changeImgLoad] = useState<boolean>(false);
    const [isImgLoadError, setImgError] = useState<boolean>(false);
    const [url, changeUrl] = useState<string>(props.post.url);
+   const [isLikeOn, changeLike] = useState<boolean>(false);
+   const [sessionLikes, changeSessionLikes] = useState<number>(props.post.likes);
+
    const imgLoaded = (): void => {
       changeImgLoad(!isImgLoad);
    };
    const setErrorImg = () => {
       setImgError(true);
       changeUrl('https://dubsism.files.wordpress.com/2017/12/image-not-found.png');
+   }
+   const changeLikesHandler = () => {
+      changeLike(!isLikeOn);
+      if(isLikeOn) {
+         changeSessionLikes(sessionLikes-1);
+         props.changePostLikes(props.post._id, sessionLikes);
+      } else {
+         changeSessionLikes(sessionLikes+1);
+         props.changePostLikes(props.post._id, sessionLikes);
+      }
+      console.log(props.post)
    }
    return (
       <>
@@ -30,8 +44,8 @@ export const Card: React.FC<{ post: IPosts }> = (props) => {
             <div className="card-content">
                <p>{props.post.text}</p>
                <div className="likeIcon">
-                  <i className="material-icons">favorite_border</i>
-                  <i className="likeCount">{props.post.likes}</i>
+                  <i className="material-icons" onClick={changeLikesHandler}>{isLikeOn ? 'favorite' : 'favorite_border'}</i>
+                  <i className="likeCount">{sessionLikes}</i>
                </div>
             </div>
          </div>

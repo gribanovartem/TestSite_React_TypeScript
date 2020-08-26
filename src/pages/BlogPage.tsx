@@ -5,6 +5,20 @@ import { IPosts } from "../interfaces/interfaces";
 export const BlogPage: React.FC = () => {
    const [isModal, changeModal] = useState<boolean>(false);
    const [posts, changePosts] = useState<Array<IPosts>>([]);
+   
+
+   const changePostLikes = (id: string, likes: number):void => {
+      fetch(
+         "http://localhost:8003/posts",
+         {
+            method: "PUT",
+            headers: {
+               "Content-Type": "application/json;charset=utf-8",
+            },
+            body: JSON.stringify({id: id, likes: likes}),
+         }
+      )
+   }
 
    const changeModalHandler = (e: React.MouseEvent<HTMLSpanElement>): void => {
       changeModal(!isModal);
@@ -81,7 +95,7 @@ export const BlogPage: React.FC = () => {
                <i className="material-icons addButton">add</i>
             </span>
             {posts.map((item) => {
-               return <Card post={item} key={item._id} />;
+               return <Card post={item} key={item._id} changePostLikes={changePostLikes}/>;
             })}
          </div>
       </div>
