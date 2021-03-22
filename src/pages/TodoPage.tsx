@@ -13,8 +13,8 @@ export const TodoPage: React.FC = () => {
       };
       updateTodo((prev) => [newTodo, ...prev]);
       fetch(
-         // "https://todoblognodejs.herokuapp.com/todos",
-         "http://localhost:8003/todos",
+         "https://todoblognodejs.herokuapp.com/todos",
+         // "http://localhost:8003/todos",
          {
             method: "POST",
             headers: {
@@ -34,8 +34,8 @@ export const TodoPage: React.FC = () => {
       // const localTodos = JSON.parse(localStorage.getItem('todos') || '[]') as ITodos[]
       // updateTodo(localTodos)
       fetch(
-         // "https://todoblognodejs.herokuapp.com/todos",
-         "http://localhost:8003/todos",
+         "https://todoblognodejs.herokuapp.com/todos",
+         // "http://localhost:8003/todos",
          {
             method: "GET",
             headers: {
@@ -63,8 +63,8 @@ export const TodoPage: React.FC = () => {
             if (todo.id === id) {
                todo.completed = !todo.completed;
                fetch(
-                  // "https://todoblognodejs.herokuapp.com/todos",
-                  "http://localhost:8003/todos",
+                  "https://todoblognodejs.herokuapp.com/todos",
+                  // "http://localhost:8003/todos",
                   {
                      method: "PUT",
                      headers: {
@@ -83,8 +83,8 @@ export const TodoPage: React.FC = () => {
    const removeHandler = (id: number) => {
       updateTodo((prev) => prev.filter((todo) => todo.id !== id));
       fetch(
-         // "https://todoblognodejs.herokuapp.com/todos",
-         "http://localhost:8003/todos",
+         "https://todoblognodejs.herokuapp.com/todos",
+         // "http://localhost:8003/todos",
          {
             method: "DELETE",
             headers: {

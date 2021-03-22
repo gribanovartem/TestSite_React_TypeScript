@@ -9,7 +9,8 @@ export const BlogPage: React.FC = () => {
 
    const changePostLikes = (id: string, likes: number):void => {
       fetch(
-         "http://localhost:8003/posts",
+         "https://todoblognodejs.herokuapp.com/posts",
+         // "http://localhost:8003/posts",
          {
             method: "PUT",
             headers: {
@@ -36,8 +37,8 @@ export const BlogPage: React.FC = () => {
          likes: 0
       }
       fetch(
-         // "https://todoblognodejs.herokuapp.com/posts",
-         "http://localhost:8003/posts",
+         "https://todoblognodejs.herokuapp.com/posts",
+         // "http://localhost:8003/posts",
          {
             method: "POST",
             headers: {
@@ -55,12 +56,13 @@ export const BlogPage: React.FC = () => {
 
    useEffect(() => {
       fetch(
-         // "https://todoblognodejs.herokuapp.com/posts",
-         "http://localhost:8003/posts",
+         "https://todoblognodejs.herokuapp.com/posts",
+         // "http://localhost:8003/posts",
          {
             method: "GET",
+            // mode: 'no-cors',
             headers: {
-               "Content-Type": "application/json",
+               "Content-Type": "application/json;charset=utf-8",
             },
          }
       )
@@ -86,7 +88,7 @@ export const BlogPage: React.FC = () => {
          <div
             className={isModal ? "darkBackground active" : "darkBackground"}
             onClick={closeModalHandler}
-         ></div>
+         />
          <div className="col s3 m4">
             <span
                className="btn-floating btn-large waves-effect waves-light light-blue darken-3"
