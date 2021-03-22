@@ -7,8 +7,8 @@ export const Footer: React.FC = () => {
             <i className="tiny material-icons">copyright</i>Artsiom Hrybanau
          </div>
          <div className="footer_logo">
-            <span className="logoName">Artsiom</span>{" "}
-            <span className="logoFam">Hrybanau</span>
+            <span className="logoName">React</span>{" "}
+            <span className="logoFam">TypeScript</span>
          </div>
          <div className="footer_social">
             <a href="https://linkedin.com/in/artsiomhrybanau" target="_blank" rel="noopener noreferrer">

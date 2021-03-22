@@ -29,7 +29,7 @@ export const Header: React.FC = () => {
          <nav className="light-blue darken-3">
             <div className="nav-wrapper">
                <NavLink to="/" className="brand-logo">
-               <span className='logoName'>Artsiom</span> <span className='logoFam'>Hrybanau</span>
+               <span className='logoName'>React</span> <span className='logoFam'>TypeScript</span>
                </NavLink>
                <a
                   href="/#"
