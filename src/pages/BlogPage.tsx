@@ -9,8 +9,8 @@ export const BlogPage: React.FC = () => {
 
    const changePostLikes = (id: string, likes: number):void => {
       fetch(
-         // "https://todoblognodejs.herokuapp.com/posts",
-         "http://localhost:8003/posts",
+         "https://todoblognodejs.herokuapp.com/posts",
+         // "http://localhost:8003/posts",
          {
             method: "PUT",
             headers: {
