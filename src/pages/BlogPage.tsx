@@ -9,8 +9,8 @@ export const BlogPage: React.FC = () => {
 
    const changePostLikes = (id: string, likes: number):void => {
       fetch(
-         "https://todoblognodejs.herokuapp.com/posts",
-         // "http://localhost:8003/posts",
+         // "https://todoblognodejs.herokuapp.com/posts",
+         "http://localhost:8003/posts",
          {
             method: "PUT",
             headers: {
@@ -18,7 +18,9 @@ export const BlogPage: React.FC = () => {
             },
             body: JSON.stringify({id: id, likes: likes}),
          }
-      )
+      ).then((response) => {
+         console.log(response.text());
+      });
    }
 
    const changeModalHandler = (e: React.MouseEvent<HTMLSpanElement>): void => {
@@ -97,7 +99,7 @@ export const BlogPage: React.FC = () => {
                <i className="material-icons addButton">add</i>
             </span>
             {posts.map((item) => {
-               return <Card post={item} key={item._id} changePostLikes={changePostLikes}/>;
+               return <Card post={item} key={item._id} isLiked={localStorage.getItem(item._id.toString())?true:false} changePostLikes={changePostLikes}/>;
             })}
          </div>
       </div>

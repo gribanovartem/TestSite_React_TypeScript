@@ -2,12 +2,15 @@ import React, { useState } from "react";
 import { IPosts } from "../interfaces/interfaces";
 import { Preloader } from "./Preloader";
 
-export const Card: React.FC<{ post: IPosts, changePostLikes: Function }> = (props) => {
+export const Card: React.FC<{ post: IPosts, changePostLikes: Function, isLiked: boolean }> = (props) => {
    const [isImgLoad, changeImgLoad] = useState<boolean>(false);
    const [isImgLoadError, setImgError] = useState<boolean>(false);
    const [url, changeUrl] = useState<string>(props.post.url);
-   const [isLikeOn, changeLike] = useState<boolean>(false);
+   const [isLikeOn, changeLike] = useState<boolean>(props.isLiked);
    const [sessionLikes, changeSessionLikes] = useState<number>(props.post.likes);
+   // if(props.isLiked) {
+   //    changeLike(true);
+   // }
 
    const imgLoaded = (): void => {
       changeImgLoad(!isImgLoad);
@@ -17,15 +20,16 @@ export const Card: React.FC<{ post: IPosts, changePostLikes: Function }> = (prop
       changeUrl('https://dubsism.files.wordpress.com/2017/12/image-not-found.png');
    }
    const changeLikesHandler = () => {
+      localStorage.setItem(props.post._id.toString(), 'true')
       changeLike(!isLikeOn);
-      if(isLikeOn) {
+      if( isLikeOn) {
          changeSessionLikes(sessionLikes-1);
-         props.changePostLikes(props.post._id, sessionLikes);
+         props.changePostLikes(props.post._id, sessionLikes-1);
+         localStorage.removeItem(props.post._id.toString())
       } else {
          changeSessionLikes(sessionLikes+1);
-         props.changePostLikes(props.post._id, sessionLikes);
+         props.changePostLikes(props.post._id, sessionLikes+1);
       }
-      console.log(props.post)
    }
    return (
       <>
