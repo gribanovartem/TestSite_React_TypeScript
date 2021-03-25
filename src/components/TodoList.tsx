@@ -23,7 +23,7 @@ export const TodoList: React.FC<ITodoListProps> = ({
                   </label>
                </p>
                <p className="deleteButton" onClick={() => onRemove(todo.id)}>
-                  Удалить
+                  Delete
                </p>
             </li>
          </ul>

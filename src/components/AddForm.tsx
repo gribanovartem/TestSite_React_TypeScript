@@ -12,12 +12,14 @@ export const AddForm: React.FC<{
 
    const [title, changeTitle] = useState<string>("");
    const [url, changeUrl] = useState<string>("");
-   const [text, changeText] = useState<string>("");
+   const [directions, changeDirections] = useState<string>("");
+   const [ingredients, changeIngredients] = useState<string>("");
 
    const clearAllInputField = ():void => {
       changeTitle('');
       changeUrl('');
-      changeText('');
+      changeDirections('');
+      changeIngredients('');
    }
    
    const changeTitleHandler = (
@@ -28,10 +30,16 @@ export const AddForm: React.FC<{
    const changeUrlHandler = (e: React.ChangeEvent<HTMLInputElement>): void => {
       changeUrl(e.target.value);
    };
-   const changeTextHandler = (
+   const changeDirectionsHandler = (
       e: React.ChangeEvent<HTMLTextAreaElement>
    ): void => {
-      changeText(e.target.value);
+      changeDirections(e.target.value);
+   };
+   const changeIngredientsHandler = (
+      e: React.ChangeEvent<HTMLTextAreaElement>
+   ): void => {
+      changeIngredients(e.target.value);
+      console.log(ingredients)
    };
 
    return (
@@ -53,7 +61,7 @@ export const AddForm: React.FC<{
                   className="validate"
                   onChange={changeTitleHandler}
                />
-               <label htmlFor="Title">Заголовок</label>
+               <label htmlFor="Title">Recipe name</label>
             </div>
             <div className="input-field col s12">
                <input
@@ -63,16 +71,27 @@ export const AddForm: React.FC<{
                   className="validate"
                   onChange={changeUrlHandler}
                />
-               <label htmlFor="URL">URL картинки</label>
+               <label htmlFor="URL">URL</label>
             </div>
             <div className="input-field col s12">
                <textarea
-                  id="text"
-                  value={text}
+                  id="ingredients"
+                  value={ingredients}
                   className="materialize-textarea"
-                  onChange={changeTextHandler}
+                  onChange={changeIngredientsHandler}
+                  rows={5}
                ></textarea>
-               <label htmlFor="text">Текст статьи</label>
+               <label htmlFor="ingredients">Ingredients</label>
+            </div>
+            <div className="input-field col s12">
+               <textarea
+                  id="directions"
+                  value={directions}
+                  className="materialize-textarea"
+                  onChange={changeDirectionsHandler}
+                  rows={5}
+               ></textarea>
+               <label htmlFor="directions">Directions</label>
             </div>
          </div>
          <div className="modalButtons">
@@ -90,7 +109,7 @@ export const AddForm: React.FC<{
             </span>
             <span
                className="waves-effect light-blue darken-3 btn"
-               onClick={() => props.addNewPost(title, url, text)}
+               onClick={() => props.addNewPost(title, url, directions.replace(/\n/g, '<br>'), ingredients.replace(/\n/g, '<br>'))}
             >
                Добавить
             </span>

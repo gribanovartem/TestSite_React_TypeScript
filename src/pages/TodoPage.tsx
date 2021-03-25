@@ -96,7 +96,7 @@ export const TodoPage: React.FC = () => {
    };
    return (
       <>
-         <h1>Список дел</h1>
+         <h1>Shopping list</h1>
          <TodoForm setTodo={setTodo} />
          <TodoList
             todoList={todoList}

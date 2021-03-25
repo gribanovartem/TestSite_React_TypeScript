@@ -1,4 +1,4 @@
-import React, { useState, MouseEvent, useEffect } from "react";
+import React, { useState, useEffect } from "react";
 import { AddForm } from "../components/AddForm";
 import { Card } from "../components/Card";
 import { IPosts } from "../interfaces/interfaces";
@@ -9,8 +9,8 @@ export const BlogPage: React.FC = () => {
 
    const changePostLikes = (id: string, likes: number):void => {
       fetch(
-         "https://todoblognodejs.herokuapp.com/posts",
-         // "http://localhost:8003/posts",
+         // "https://todoblognodejs.herokuapp.com/posts",
+         "http://localhost:8003/posts",
          {
             method: "PUT",
             headers: {
@@ -31,16 +31,17 @@ export const BlogPage: React.FC = () => {
          changeModal(false);
       }
    };
-   const addNewPost = (title: string, url: string, text: string): void => {
+   const addNewPost = (title: string, url: string, directions: string, ingredients: string): void => {
       const newPost = {
          title,
          url,
-         text,
+         directions,
+         ingredients,
          likes: 0
       }
       fetch(
-         "https://todoblognodejs.herokuapp.com/posts",
-         // "http://localhost:8003/posts",
+         // "https://todoblognodejs.herokuapp.com/posts",
+         "http://localhost:8003/posts",
          {
             method: "POST",
             headers: {

@@ -17,7 +17,8 @@ export interface ITodoListProps {
 export interface IPosts {
    _id: number;
    url: string;
-   text: string;
+   ingredients: string;
+   directions: string;
    likes: number;
    title: string;
 }

@@ -1,4 +1,4 @@
-import React, { ChangeEvent, useState } from "react";
+import React, { useState } from "react";
 import { ITodoFormProps } from "../interfaces/interfaces";
 
 export const TodoForm: React.FC<ITodoFormProps> = (props) => {
@@ -24,7 +24,7 @@ export const TodoForm: React.FC<ITodoFormProps> = (props) => {
                   value={title}
                   onKeyPress={enterInputHandler}
                />
-               <label htmlFor="first_name">Добавить Дело</label>
+               <label htmlFor="first_name">Add product</label>
             </div>
          </div>
       </div>

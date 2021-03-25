@@ -99,7 +99,7 @@ nav {
 .likeIcon {
    position: relative;
    display: flex;
-   align-items: center;
+   align-self: flex-start;
 }
 
 .content {
@@ -227,6 +227,15 @@ textarea:focus {
    display: flex;
    justify-content: space-between;
 }
+.card-text {
+   text-align: start;
+}
+.card-text p {
+   white-space: pre;
+}
+.card-title {
+   right: 0;
+}
 .col .row .input-field {
    padding-bottom: 10px;
 }
@@ -243,6 +252,8 @@ textarea:focus {
 .modalShow {
    top: 33.33%;
    transition: 0.5s;
+   max-height: 80%;
+   overflow-y: auto;
 }
 .modalHide {
    top: -100%;
@@ -277,6 +288,16 @@ textarea:focus {
    padding-top: 20px;
 }
 
+/* MainPage */
+
+.mainImage {
+   width: 60%;
+   margin: 0 auto;
+}
+.mainImage img {
+   width: 100%;
+}
+
 @media only screen and (min-width: 1201px) {
    .row .col.m4 {
       width: 33%;
@@ -295,9 +316,18 @@ textarea:focus {
       position: fixed;
       right: 1%;
    }
+   .mainImage {
+      width: 75%;
+   }
 }
 @media only screen and (max-width: 700px) {
    .row .col.m4 {
       width: 90%;
    }
+   .mainImage {
+      width: 90%;
+   }
+   nav .brand-logo {
+      font-size: 1rem;
+  }
 }

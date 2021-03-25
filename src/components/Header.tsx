@@ -6,13 +6,13 @@ export const Header: React.FC = () => {
    const mobileMenu = (
       <ul className="mobile_nav light-blue darken-3" onClick={() => hideMobileMenu()}>
          <li>
-            <NavLink to="/TodoPage">Список дел</NavLink>
+            <NavLink to="/TodoPage">Shopping list</NavLink>
          </li>
          <li>
-            <NavLink to="/BlogPage">Блог</NavLink>
+            <NavLink to="/BlogPage">Blog</NavLink>
          </li>
          <li>
-            <NavLink to="/InfoPage">Информация</NavLink>
+            <NavLink to="/InfoPage">Info</NavLink>
          </li>
       </ul>
       
@@ -29,7 +29,7 @@ export const Header: React.FC = () => {
          <nav className="light-blue darken-3">
             <div className="nav-wrapper">
                <NavLink to="/" className="brand-logo">
-               <span className='logoName'>React</span> <span className='logoFam'>TypeScript</span>
+               <span className='logoName'>Recipe</span> <span className='logoFam'>Book</span>
                </NavLink>
                <a
                   href="/#"
@@ -41,13 +41,13 @@ export const Header: React.FC = () => {
                </a>
                <ul className="right hide-on-med-and-down">
                   <li>
-                     <NavLink to="/TodoPage">Список дел</NavLink>
+                     <NavLink to="/TodoPage">Shopping list</NavLink>
                   </li>
                   <li>
-                     <NavLink to="/BlogPage">Блог</NavLink>
+                     <NavLink to="/BlogPage">Blog</NavLink>
                   </li>
                   <li>
-                     <NavLink to="/InfoPage">Информация</NavLink>
+                     <NavLink to="/InfoPage">Info</NavLink>
                   </li>
                </ul>
             </div>

@@ -8,9 +8,6 @@ export const Card: React.FC<{ post: IPosts, changePostLikes: Function, isLiked: 
    const [url, changeUrl] = useState<string>(props.post.url);
    const [isLikeOn, changeLike] = useState<boolean>(props.isLiked);
    const [sessionLikes, changeSessionLikes] = useState<number>(props.post.likes);
-   // if(props.isLiked) {
-   //    changeLike(true);
-   // }
 
    const imgLoaded = (): void => {
       changeImgLoad(!isImgLoad);
@@ -46,7 +43,12 @@ export const Card: React.FC<{ post: IPosts, changePostLikes: Function, isLiked: 
                <span className="card-title">{props.post.title}</span>
             </div>
             <div className="card-content">
-               <p>{props.post.text}</p>
+               <div className="card-text">
+                  <h5>Ingredients:</h5>
+                  <p>{props.post.ingredients.replaceAll("<br>", '\n')}</p>
+                  <h5>Directions:</h5>
+                  <p>{props.post.directions.replaceAll("<br>", '\n')}</p>
+               </div>
                <div className="likeIcon">
                   <i className="material-icons" onClick={changeLikesHandler}>{isLikeOn ? 'favorite' : 'favorite_border'}</i>
                   <i className="likeCount">{sessionLikes}</i>
