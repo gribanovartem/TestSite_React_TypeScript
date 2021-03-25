@@ -99,19 +99,19 @@ export const AddForm: React.FC<{
                className="waves-effect yellow darken-3 btn"
                onClick={clearAllInputField}
             >
-               Очистить
+               Clear
             </span>
             <span
                className="waves-effect red lighten-1 btn"
                onClick={() => props.closeModalHandler()}
             >
-               Отмена
+               Cancel
             </span>
             <span
                className="waves-effect light-blue darken-3 btn"
                onClick={() => props.addNewPost(title, url, directions.replace(/\n/g, '<br>'), ingredients.replace(/\n/g, '<br>'))}
             >
-               Добавить
+               Add
             </span>
          </div>
       </form>

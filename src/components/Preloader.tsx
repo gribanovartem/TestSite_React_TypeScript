@@ -2,9 +2,6 @@ import React from "react";
 
 export const Preloader: React.FC = () => {
    return (
-      // <div className="progress">
-      //    <div className="indeterminate"></div>
-      // </div>
       <div className="preloader-wrapper active">
          <div className="spinner-layer spinner-red-only">
             <div className="circle-clipper left">

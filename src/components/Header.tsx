@@ -4,7 +4,7 @@ import { NavLink } from "react-router-dom";
 export const Header: React.FC = () => {
    const [showMenu, setShowMenu] = useState(false);
    const mobileMenu = (
-      <ul className="mobile_nav light-blue darken-3" onClick={() => hideMobileMenu()}>
+      <ul className="mobile_nav yellow darken-3" onClick={() => hideMobileMenu()}>
          <li>
             <NavLink to="/TodoPage">Shopping list</NavLink>
          </li>
@@ -26,7 +26,7 @@ export const Header: React.FC = () => {
    };
    return (
       <div className="header ">
-         <nav className="light-blue darken-3">
+         <nav className="yellow darken-3">
             <div className="nav-wrapper">
                <NavLink to="/" className="brand-logo">
                <span className='logoName'>Recipe</span> <span className='logoFam'>Book</span>

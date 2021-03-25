@@ -9,8 +9,8 @@ export const BlogPage: React.FC = () => {
 
    const changePostLikes = (id: string, likes: number):void => {
       fetch(
-         // "https://todoblognodejs.herokuapp.com/posts",
-         "http://localhost:8003/posts",
+         "https://todoblognodejs.herokuapp.com/posts",
+         // "http://localhost:8003/posts",
          {
             method: "PUT",
             headers: {
@@ -94,7 +94,7 @@ export const BlogPage: React.FC = () => {
          />
          <div className="col s3 m4">
             <span
-               className="btn-floating btn-large waves-effect waves-light light-blue darken-3"
+               className="btn-floating btn-large waves-effect waves-light yellow darken-3"
                onClick={changeModalHandler}
             >
                <i className="material-icons addButton">add</i>

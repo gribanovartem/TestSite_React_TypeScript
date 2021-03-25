@@ -2,7 +2,7 @@ import React from "react";
 
 export const Footer: React.FC = () => {
    return (
-      <div className="footer light-blue darken-3">
+      <div className="footer yellow darken-3">
          <div className="footer_author">
             <i className="tiny material-icons">copyright</i>Artsiom Hrybanau
          </div>

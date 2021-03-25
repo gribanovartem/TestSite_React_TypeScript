@@ -218,6 +218,9 @@ textarea:focus {
    z-index: 20;
    transition: .3s all;
 }
+.preloader-wrapper {
+   position: absolute;
+}
 .App .row .addForm.modalShow,
 .darkBackground.active{
    opacity: 1;
@@ -231,7 +234,7 @@ textarea:focus {
    text-align: start;
 }
 .card-text p {
-   white-space: pre;
+   white-space: pre-line;
 }
 .card-title {
    right: 0;
