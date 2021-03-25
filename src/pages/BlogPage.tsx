@@ -40,8 +40,8 @@ export const BlogPage: React.FC = () => {
          likes: 0
       }
       fetch(
-         // "https://todoblognodejs.herokuapp.com/posts",
-         "http://localhost:8003/posts",
+         "https://todoblognodejs.herokuapp.com/posts",
+         // "http://localhost:8003/posts",
          {
             method: "POST",
             headers: {
